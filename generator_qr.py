@@ -3,6 +3,10 @@ from PIL import Image, ImageOps
 
 def generate_qr(data, filename="qrcode.png", fill_color="black", back_color="white"):
     try:
+        if not any(filename.lower().endswith(ext) for ext in [".png", ".jpg", ".jpeg", ".bmp", ".gif"]):
+            print("No valid file extension found. Defaulting to '.png'.")
+            filename += ".png"
+
         qr = qrcode.QRCode(
                 version=1, # size of the qr code
                 error_correction=qrcode.constants.ERROR_CORRECT_L,
