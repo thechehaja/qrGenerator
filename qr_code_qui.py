@@ -35,7 +35,7 @@ def generate_qr():
                 qr_width, qr_height = img.size
                 logo_size = int(qr_width * 0.2)
                 logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
-                pos = ((qr_width - logo_size) // 2, (qr_height - logo_size) // 2)
+                pos = (qr_width - logo_size - 10, qr_height - logo_size - 10)
                 img.paste(logo, pos, mask=logo.convert("RGBA"))
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to add logo: {e}")
