@@ -64,26 +64,26 @@ root.geometry("400x700")
 root.resizable(False, False)
 
 tk.Label(root, text="Data for QR Code:").pack(pady=5)
-data_entry = tk.Entry(root, width=40)
+data_entry = tk.Entry(root, width=40, justify=tk.CENTER)
 data_entry.pack(pady=5)
 
 tk.Label(root, text="Filename:").pack(pady=5)
-filename_entry = tk.Entry(root, width=40)
+filename_entry = tk.Entry(root, width=40, justify=tk.CENTER)
 filename_entry.pack(pady=5)
 
 tk.Label(root, text="QR Code Color (default: black):").pack(pady=5)
-fill_color_entry = tk.Entry(root, width=40)
+fill_color_entry = tk.Entry(root, width=40, justify=tk.CENTER)
 fill_color_entry.pack(pady=5)
 
 tk.Label(root, text="Background color (default: white):").pack(pady=5)
-back_color_entry = tk.Entry(root, width=40)
+back_color_entry = tk.Entry(root, width=40, justify=tk.CENTER)
 back_color_entry.pack(pady=5)
 
 tk.Label(root, text="Logo Path (optional):").pack(pady=5)
 logo_frame = tk.Frame(root)
 logo_frame.pack(pady=5)
 
-logo_path_entry = tk.Entry(logo_frame, width=29)
+logo_path_entry = tk.Entry(logo_frame, width=29, justify=tk.CENTER)
 logo_path_entry.grid(row=0, column=1, padx=5, pady=5)
 tk.Button(logo_frame, text="Browse", height=1, command=browse_logo).grid(row=0, column=2, padx=5, pady=5)
 
@@ -91,7 +91,7 @@ tk.Button(root, text="Generate QR Code", command=generate_qr).pack(pady=20)
 
 tk.Label(root, text="QR Code Preview:").pack(pady=5)
 default_image = PhotoImage(width=200, height=200)
-preview_label = tk.Label(root, image=default_image, bg="white", width=200, height=200)
+preview_label = tk.Label(root, image=default_image, bg="white", width=200, height=200, bd=2, relief="solid")
 preview_label.image = default_image
 preview_label.pack(pady=5)
 
