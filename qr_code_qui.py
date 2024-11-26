@@ -30,7 +30,7 @@ def generate_qr():
                 qr_width, qr_height = img.size
                 logo_size = int(qr_width * 0.2)
                 logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
-                pos = (qr_width - logo_size - 10, qr_height - logo_size - 10)
+                pos = ((qr_width - logo_size) // 2, (qr_height - logo_size) // 2)
                 img.paste(logo, pos, mask=logo.convert("RGBA"))
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to add logo: {e}")
@@ -65,24 +65,24 @@ root.geometry("500x700")
 root.resizable(False, False)
 
 tk.Label(root, text="Data for QR Code:").pack(pady=5)
-data_entry = tk.Entry(root, width=51, justify=tk.LEFT)
+data_entry = tk.Entry(root, width=51, justify=tk.CENTER)
 data_entry.pack(pady=5)
 
 tk.Label(root, text="Filename:").pack(pady=5)
-filename_entry = tk.Entry(root, width=51, justify=tk.LEFT)
+filename_entry = tk.Entry(root, width=51, justify=tk.CENTER)
 filename_entry.pack(pady=5)
 
 tk.Label(root, text="QR Code Color (default: black):").pack(pady=5)
 fill_frame = tk.Frame(root)
 fill_frame.pack(pady=5)
-fill_color_entry = tk.Entry(fill_frame, width=40, justify=tk.LEFT)
+fill_color_entry = tk.Entry(fill_frame, width=40, justify=tk.CENTER)
 fill_color_entry.grid(row=0, column=1, padx=5, pady=5)
 tk.Button(fill_frame, text="Select...", height=1, command=lambda: pick_color(fill_color_entry)).grid(row=0, column=2, padx=5, pady=5)
 
 tk.Label(root, text="Background color (default: white):").pack(pady=5)
 back_frame = tk.Frame(root)
 back_frame.pack(pady=5)
-back_color_entry = tk.Entry(back_frame, width=40, justify=tk.LEFT)
+back_color_entry = tk.Entry(back_frame, width=40, justify=tk.CENTER)
 back_color_entry.grid(row=0, column=1, padx=5, pady=5)
 tk.Button(back_frame, text="Select...", command=lambda: pick_color(back_color_entry)).grid(row=0, column=2, padx=5, pady=5)
 
@@ -90,7 +90,7 @@ tk.Label(root, text="Logo Path (optional):").pack(pady=5)
 logo_frame = tk.Frame(root)
 logo_frame.pack(pady=5)
 
-logo_path_entry = tk.Entry(logo_frame, width=40, justify=tk.LEFT)
+logo_path_entry = tk.Entry(logo_frame, width=40, justify=tk.CENTER)
 logo_path_entry.grid(row=0, column=1, padx=5, pady=5)
 tk.Button(logo_frame, text="Browse", height=1, command=browse_logo).grid(row=0, column=2, padx=5, pady=5)
 
